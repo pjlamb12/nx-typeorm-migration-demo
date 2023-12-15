@@ -2,16 +2,25 @@
   "name": "@typeorm-migrations/source",
   "version": "0.0.0",
   "license": "MIT",
-  "scripts": {},
+  "scripts": {
+    "build-api": "nx build api",
+    "generate-config": "tsc apps/api/src/typeorm.config.ts --outDir \"./dist\" --emitDecoratorMetadata true --experimentalDecorators true",
+    "generate-migration": "npx typeorm -d dist/typeorm.config.js migration:generate PostCount",
+    "nx": "nx",
+    "run-migration-script": "npm run build-api && npm run generate-config && npm run generate-migration && npm run migrate"
+  },
   "private": true,
   "dependencies": {
     "@nestjs/common": "^10.0.2",
     "@nestjs/core": "^10.0.2",
     "@nestjs/platform-express": "^10.0.2",
+    "@nestjs/typeorm": "^10.0.1",
     "axios": "^1.0.0",
+    "pg": "^8.11.3",
     "reflect-metadata": "^0.1.13",
     "rxjs": "^7.8.0",
-    "tslib": "^2.3.0"
+    "tslib": "^2.3.0",
+    "typeorm": "^0.3.17"
   },
   "devDependencies": {
     "@nestjs/schematics": "^10.0.1",
