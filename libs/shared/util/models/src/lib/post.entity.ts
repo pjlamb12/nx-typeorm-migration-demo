@@ -5,9 +5,9 @@ export class Post {
   @PrimaryGeneratedColumn()
   id!: number;
 
-  @Column()
+  @Column('text')
   title!: string;
 
-  @Column()
+  @Column('text')
   text!: string;
 }
